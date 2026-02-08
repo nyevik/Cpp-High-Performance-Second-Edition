@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <algorithm>
 
 TEST(Lambda, BasicSyntaxExample1) {
   // Prerequisite
