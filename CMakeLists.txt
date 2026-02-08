@@ -1,11 +1,8 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.27)
 
-# Use hunter to download and build some third party dependencies
-include("cmake/HunterGate.cmake")
+#NVY- do not want to use Hunter.
 
-huntergate(URL "https://github.com/cpp-pm/hunter/archive/v0.23.279.tar.gz" SHA1 "0a8ede485c3e9c1ceed8ccb989ab6c0aba1f4db7")
-
-project(CppHighPerformanceCodeExamples)
+project(CppHighPerformanceCodeExamples LANGUAGES CXX)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -31,10 +28,6 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcoroutines-ts")
   endif()
 endif()
-
-hunter_add_package(Boost)
-hunter_add_package(GTest)
-hunter_add_package(benchmark)
 
 find_package(Boost CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
