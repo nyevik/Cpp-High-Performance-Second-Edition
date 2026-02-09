@@ -43,3 +43,15 @@ TEST(References, PassingNullptr) {
   volume = get_volume2(nullptr);
   ASSERT_EQ(volume, 0.f);
 }
+
+TEST(References, ModifyingObject) {
+  // Using references
+  auto sphere = Sphere{};
+  auto& ref = sphere;
+  assert(&ref == &sphere);
+  assert(ref.radius() == sphere.radius());
+
+  // Using pointers
+  auto sphere_ptr = std::addressof(sphere);
+  assert(sphere_ptr->radius() == sphere.radius());
+}
