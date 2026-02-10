@@ -29,6 +29,11 @@ public:
   auto &mref() { return m_; }
   auto mref_trailing() -> int& { return m_; }
 
+  void some_func(const std::string& a, const std::string & b) {
+    const auto& c = a + b; // c is a const reference to the result of a + b
+    //auto& d = a + b; // d is a non-const reference to the result of a + b, which is not valid and will cause a compilation error
+  }
+
 private: 
   int m_{};
 };
