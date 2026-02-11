@@ -186,7 +186,7 @@ Buffer& Buffer::operator=(
   return *this;    // returns a reference to the current object
 }
 
-int main() {
+/*int main() {
 
   Buffer b1{1.0f, 2.0f, 3.0f}; // create a buffer with three float values
   PRINT_BUFFER(b1);            // print the contents of the buffer
@@ -199,4 +199,4 @@ int main() {
   b1.printBuffer(); // print the contents of the original buffer to show that it
                     // is unchanged after the copy
   return 0;
-}
+}*/

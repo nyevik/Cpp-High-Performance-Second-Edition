@@ -81,7 +81,7 @@ TEST(MoveSemantics, RuleOfFive) {
 // Rule of zero
 class Button {
 public:
-  Button() {}
+  Button() { ; } // Default constructor
 
   // // Copy-constructor/copy-assignment
   // Button(const Button&) = default;
