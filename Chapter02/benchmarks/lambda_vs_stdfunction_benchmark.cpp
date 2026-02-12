@@ -1,12 +1,15 @@
 #include <benchmark/benchmark.h>
-#include <vector>
 #include <functional>
+#include <iostream>
+#include <vector>
 
 //
 // Remember to build using optimizations turned on!
 // See chapter 3 for an introduction to benchmarking
 
 static void use_lambda(benchmark::State& state) {
+  std::cout << "sizeof lambda: " << sizeof([](int v) { return v * 3; })
+            << std::endl;
   auto lambda = [](int v) { return v * 3; };
   using L = decltype(lambda);
   auto fs = std::vector<L>{};
@@ -20,6 +23,8 @@ static void use_lambda(benchmark::State& state) {
 }
 
 static void use_std_function(benchmark::State& state) {
+  std::cout << "sizeof std::function: " << sizeof(std::function<int(int)>)
+            << std::endl;
   auto lbd = [](int v) { return v * 3; };
   using F = std::function<int(int)>;
   auto fs = std::vector<F>{};
@@ -31,8 +36,21 @@ static void use_std_function(benchmark::State& state) {
     }
   }
 }
+static void use_function_pointer(benchmark::State& state) {
+  std::cout << "sizeof function pointer: " << sizeof(int (*)(int)) << std::endl;
+  auto func = [](int v) { return v * 3; };
+  using F = int (*)(int);
+  auto fs = std::vector<F>{};
+  fs.resize(10'000'000, func);
+  auto res = 1;
+  for (auto _ : state) {
+    for (const auto& f : fs) {
+      benchmark::DoNotOptimize(f(res));
+    }
+  }
+}
 
 BENCHMARK(use_lambda);
 BENCHMARK(use_std_function);
+BENCHMARK(use_function_pointer);
 BENCHMARK_MAIN();
-
