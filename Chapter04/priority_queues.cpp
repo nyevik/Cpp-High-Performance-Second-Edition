@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <forward_list>
 #include <queue>

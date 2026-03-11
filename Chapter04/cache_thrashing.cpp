@@ -32,8 +32,11 @@ auto cache_thrashing_slow(MatrixType& matrix) {
   }
 }
 
-// Use static storage, since this matrix
-// might not fit on the stack.
+// Use static storage duration so the matrix is placed in
+// static memory instead of on the thread stack.
+// For this example, the matrix is large enough that a stack
+// allocation could easily overflow a typical stack.
+// As a global object, it is created once and reused by both tests.
 MatrixType m;
 
 TEST(CacheThrashing, Fast) { cache_thrashing_fast(m); }
