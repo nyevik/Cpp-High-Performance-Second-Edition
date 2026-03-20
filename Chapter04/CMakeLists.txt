@@ -9,6 +9,8 @@ set(CHAPTER04_TEST_SOURCES
   read_file_into_string.cpp
   sum_scores.cpp
   unordered_sets.cpp
+  my_cache_thrashing.cpp
+  my_vector.cpp
 )
 
 add_executable(${PROJECT_NAME}
@@ -22,6 +24,5 @@ foreach(SOURCE_FILE IN LISTS CHAPTER04_TEST_SOURCES)
   add_executable("Chapter04-${TARGET_SUFFIX}" EXCLUDE_FROM_ALL "${SOURCE_FILE}")
   target_link_libraries("Chapter04-${TARGET_SUFFIX}" PRIVATE GTest::gtest_main)
 endforeach()
-
-add_executable(Chapter04-my_cache_thrashing EXCLUDE_FROM_ALL my_cache_thrashing.cpp)
-target_link_libraries(Chapter04-my_cache_thrashing PRIVATE GTest::gtest)
+add_executable(my_vector_test EXCLUDE_FROM_ALL my_vector.cpp)
+target_link_libraries(my_vector_test PRIVATE GTest::gtest_main)
