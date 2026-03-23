@@ -11,6 +11,7 @@ set(CHAPTER04_TEST_SOURCES
   unordered_sets.cpp
   my_cache_thrashing.cpp
   my_vector.cpp
+  my_file_basic_string.cpp
 )
 
 add_executable(${PROJECT_NAME}
@@ -26,3 +27,6 @@ foreach(SOURCE_FILE IN LISTS CHAPTER04_TEST_SOURCES)
 endforeach()
 add_executable(my_vector_test EXCLUDE_FROM_ALL my_vector.cpp)
 target_link_libraries(my_vector_test PRIVATE GTest::gtest_main)
+
+add_executable(my_file_basic_string_test EXCLUDE_FROM_ALL my_file_basic_string.cpp)
+target_link_libraries(my_file_basic_string_test PRIVATE GTest::gtest_main)
