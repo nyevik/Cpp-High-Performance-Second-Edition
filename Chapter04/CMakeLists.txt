@@ -12,6 +12,7 @@ set(CHAPTER04_TEST_SOURCES
   my_cache_thrashing.cpp
   my_vector.cpp
   my_file_basic_string.cpp
+  my_main_basic_string.cpp
 )
 
 add_executable(${PROJECT_NAME}
@@ -30,3 +31,5 @@ target_link_libraries(my_vector_test PRIVATE GTest::gtest_main)
 
 add_executable(my_file_basic_string_test EXCLUDE_FROM_ALL my_file_basic_string.cpp)
 target_link_libraries(my_file_basic_string_test PRIVATE GTest::gtest_main)
+
+add_executable(my_main_basic_string EXCLUDE_FROM_ALL my_main_basic_string.cpp)
